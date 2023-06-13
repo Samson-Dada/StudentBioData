@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import fetchStudents from "../Hooks/StudentHooks";
+import { useNavigate } from "react-router-dom";
+import GetStudentList from "../Hooks/StudentHooks";
 
 const StudentList = () => {
+  const nav = useNavigate();
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
-    const fetchStudentData = async () => {
-      const response = await fetchStudents();
+    const studentList = async () => {
+      const response = await GetStudentList();
       setStudent(response);
     };
-    fetchStudentData();
+    studentList();
   }, []);
   return (
     <section className="student__section container-sm">
@@ -27,7 +28,7 @@ const StudentList = () => {
         <tbody>
           {student &&
             student.map(student => (
-              <tr key={student.studentId}>
+              <tr key={student.studentId} onClick={() => nav(`/students/${student.studentId}`)}>
                 <td>{student.studentId}</td>
                 <td>{student.firstName}</td>
                 <td>{student.lastName}</td>

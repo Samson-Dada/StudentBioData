@@ -9,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options =>
 {
     options.ReturnHttpNotAcceptable = true;
+    options.CacheProfiles.Add("240SecondsCacheProfile", new() { Duration = 240});
 
 }).AddXmlDataContractSerializerFormatters();
+builder.Services.AddCors( );
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,7 +20,10 @@ builder.Services.AddDbContext<StudentAppContext>(optionsAction =>
     optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("StudentConnection")));
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
-builder.Services.AddCors( );
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddResponseCaching();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,8 +38,8 @@ app.UseCors(optionsAction =>
     optionsAction.AllowAnyMethod();
     optionsAction.AllowAnyHeader();
 });
+app.UseResponseCaching();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,4 +1,4 @@
-using API.Models.Entites;
+﻿using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data.Repositories
@@ -15,7 +15,7 @@ namespace API.Data.Repositories
         public async Task<ICollection<Student>> GetAll()
         {
             var students = await _context.Students.ToListAsync();
-            if(!students.Any())
+            if (!students.Any())
             {
                 return null;
             }
@@ -26,14 +26,14 @@ namespace API.Data.Repositories
         public async Task<Student> GetById(int id)
         {
             var student = await _context.Students.SingleOrDefaultAsync(s => s.StudentId == id);
-            if(student is null)
+            if (student is null)
             {
                 return null;
             }
             return student;
         }
 
-        public async Task Add(Student newStudent) 
+        public async Task Add(Student newStudent)
         {
             await _context.AddAsync(newStudent);
             await _context.SaveChangesAsync();

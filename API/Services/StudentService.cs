@@ -1,11 +1,10 @@
-using System.Collections.Generic;
-using API.Data.Repositories;
-using API.Models.Entites;
+﻿using API.Data.Repositories;
+using API.Entities;
+
 namespace API.Services
 {
-    public class StudentService: IStudentService
+    public class StudentService : IStudentService
     {
-
         private readonly IStudentRepository _studentRepository;
         public StudentService(IStudentRepository studentRepository)
         {
@@ -16,7 +15,6 @@ namespace API.Services
         {
             var students = await _studentRepository.GetAll();
             return students;
-
         }
 
         public async Task<Student> GetStudentById(int studentId)
@@ -24,6 +22,5 @@ namespace API.Services
             var studentById = await _studentRepository.GetById(studentId);
             return studentById;
         }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using API.Models.Entites;
+﻿using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -8,6 +8,7 @@ namespace API.Data
 
         public static void SeedData(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Student>().HasData(new List<Student>
             {
                 new Student

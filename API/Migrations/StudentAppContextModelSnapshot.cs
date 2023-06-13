@@ -22,7 +22,7 @@ namespace API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("API.Models.Entites.Student", b =>
+            modelBuilder.Entity("API.Models.Entities.Student", b =>
                 {
                     b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace API.Migrations
                         new
                         {
                             StudentId = 1,
-                            DateOfBirth = new DateTime(2023, 6, 1, 10, 18, 10, 139, DateTimeKind.Utc).AddTicks(662),
+                            DateOfBirth = new DateTime(2023, 6, 3, 8, 44, 13, 288, DateTimeKind.Utc).AddTicks(6524),
                             FirstName = "John",
                             Gender = "Male",
                             LastName = "Deo",
@@ -66,7 +66,7 @@ namespace API.Migrations
                         new
                         {
                             StudentId = 2,
-                            DateOfBirth = new DateTime(2023, 6, 1, 10, 18, 10, 139, DateTimeKind.Utc).AddTicks(673),
+                            DateOfBirth = new DateTime(2023, 6, 3, 8, 44, 13, 288, DateTimeKind.Utc).AddTicks(6530),
                             FirstName = "Carlos",
                             Gender = "Female",
                             LastName = "Temi",
@@ -76,7 +76,7 @@ namespace API.Migrations
                         new
                         {
                             StudentId = 3,
-                            DateOfBirth = new DateTime(2023, 6, 1, 10, 18, 10, 139, DateTimeKind.Utc).AddTicks(675),
+                            DateOfBirth = new DateTime(2023, 6, 3, 8, 44, 13, 288, DateTimeKind.Utc).AddTicks(6532),
                             FirstName = "Dayo",
                             Gender = "Male",
                             LastName = "Benson",
@@ -85,7 +85,7 @@ namespace API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("API.Models.Entites.Subject", b =>
+            modelBuilder.Entity("API.Models.Entities.Subject", b =>
                 {
                     b.Property<int>("SubjectId")
                         .ValueGeneratedOnAdd()

@@ -1,6 +1,10 @@
-using API.Models.Entites;
-public interface IStudentService
+﻿using API.Entities;
+
+namespace API.Services
 {
-    Task<ICollection<Student>> GetAllStudent();
-    Task<Student> GetStudentById(int studentId);
+    public  interface IStudentService
+    {
+        Task<ICollection<Student>> GetAllStudent();
+        Task<Student> GetStudentById(int studentId);
+    }
 }
